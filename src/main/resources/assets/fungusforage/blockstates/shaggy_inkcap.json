@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "facing=north": [
+      {"model" : "fungusforage:block/shaggy_inkcap"}
+    ],
+    "facing=east": [
+      { "model" : "fungusforage:block/shaggy_inkcap", "y": 90}
+    ],
+    "facing=south": [
+    {"model" : "fungusforage:block/shaggy_inkcap", "y": 180}
+      ],
+    "facing=west": [
+      {"model" : "fungusforage:block/shaggy_inkcap", "y": 270}
+    ]
+  }
+}
+

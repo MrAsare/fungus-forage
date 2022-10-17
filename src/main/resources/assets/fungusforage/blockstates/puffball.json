@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": [
+      {"model" : "fungusforage:block/puffball"}
+    ],
+    "facing=east": [
+      { "model" : "fungusforage:block/puffball", "y": 90}
+    ],
+    "facing=south": [
+      {"model" : "fungusforage:block/puffball", "y": 180}
+    ],
+    "facing=west": [
+      {"model" : "fungusforage:block/puffball", "y": 270}
+    ]
+  }
+}

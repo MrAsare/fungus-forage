@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=north": [
+      {"model" : "fungusforage:block/fly_agaric", "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "weight": 40}
+    ],
+    "facing=east": [
+      { "model" : "fungusforage:block/fly_agaric", "y": 90 , "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "y": 90, "weight": 40}
+    ],
+    "facing=south": [
+    {"model" : "fungusforage:block/fly_agaric", "y": 180, "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "y": 180, "weight": 40}
+      ],
+    "facing=west": [
+      {"model" : "fungusforage:block/fly_agaric", "y": 270, "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "y": 270, "weight": 40}
+    ],
+
+    "facing=up": [
+      {"model" :"fungusforage:block/fly_agaric", "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "weight": 40}
+    ],
+
+    "facing=down": [
+      {"model" :"fungusforage:block/fly_agaric", "weight": 30},
+      {"model" : "fungusforage:block/fly_agaric1", "weight": 40}
+    ]
+  }
+}

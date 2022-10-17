@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.mrasare.fungusforage.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "fungusforage.mixin-refmap.json"
+}

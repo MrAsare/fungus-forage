@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "fungusforage:block_shroom"
+    }
+  ],
+  "result": {
+    "item": "fungusforage:block_shroom",
+    "count": 9
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": [
+      {"model" : "fungusforage:block/black_trumpet"}
+    ],
+    "facing=east": [
+      { "model" : "fungusforage:block/black_trumpet", "y": 90}
+    ],
+    "facing=south": [
+      {"model" : "fungusforage:block/black_trumpet", "y": 180}
+    ],
+    "facing=west": [
+      {"model" : "fungusforage:block/black_trumpet", "y": 270}
+    ]
+  }
+}
