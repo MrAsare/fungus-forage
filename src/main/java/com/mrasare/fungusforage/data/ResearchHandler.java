@@ -40,7 +40,7 @@ public class ResearchHandler
             entity.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
                     {
                         FungusForageNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(() -> entity), new ClientBoundFullSync(iResearch.getBoolList()));
-                        FungusForageNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(()->entity),new ClientBoundFullPropertySync(iResearch.getPropertiesMap()));
+//                        FungusForageNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(()->entity),new ClientBoundFullPropertySync(iResearch.getPropertiesMap()));
 
                     }
             );
@@ -54,7 +54,7 @@ public class ResearchHandler
             cloneEvent.getOriginal().getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(oldPl->{
                 cloneEvent.getPlayer().getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(newPl->{
                     newPl.copyBoolListFrom(oldPl);
-                    newPl.copyPropertiesListFrom(oldPl);
+//                    newPl.copyPropertiesListFrom(oldPl);
                 });
             });
         }

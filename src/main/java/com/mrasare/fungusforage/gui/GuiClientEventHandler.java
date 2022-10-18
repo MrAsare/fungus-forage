@@ -23,7 +23,6 @@ import org.lwjgl.opengl.GL11;
 @Mod.EventBusSubscriber(modid = FungusForage.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GuiClientEventHandler {
 
-    private static ResourceLocation bg = new ResourceLocation(FungusForage.MODID,"textures/gui/bg.png");
 
 
     @SubscribeEvent
@@ -50,20 +49,19 @@ public class GuiClientEventHandler {
                         AbstractShroom shroom = (AbstractShroom) blockStateLookedAt.getBlock();
                         StringTextComponent string = new StringTextComponent((iResearch.isDiscovered(shroom.shroom)? "§l§n" + I18n.format("block.fungusforage." + shroom.shroom.getName()):"§l§n???")+ "\n \n");
 
-                        if (shroom.shroom.getPropertiesList() != null) {
+                        if (Registration.SHROOM_LIST.get(shroom) != null) {
 
-                            Minecraft.getInstance().getTextureManager().bindTexture(bg);
 
-                            shroom.shroom.getPropertiesList().forEach(tProperty -> {
-                                string.appendString(tProperty.getName() + " : "+((blockStateLookedAt.get(tProperty)>iResearch.getPropertyValue(shroom.shroom,tProperty.getName()))?"§a":"§c") +  blockStateLookedAt.get(tProperty) +"§1" +
-                                        ((Utils.isLargestValue(tProperty, blockStateLookedAt.get(tProperty)) ? " (MAX)" : "")+ "\n"));
-                            });
+//                            Registration.SHROOM_LIST.get(shroom).forEach(tProperty -> {
+//                                string.appendString(tProperty.getName() + " : "+((blockStateLookedAt.get(tProperty)>iResearch.getPropertyValue(shroom.shroom,tProperty.getName()))?"§a":"§c") +  blockStateLookedAt.get(tProperty) +"§1" +
+//                                        ((Utils.isLargestValue(tProperty, blockStateLookedAt.get(tProperty)) ? " (MAX)" : "")+ "\n"));
+//                            });
 
-                            Utils.drawCompoundString(Minecraft.getInstance().fontRenderer,
-                                    event.getMatrixStack(), string.getString(),
-                                    "\n", 0,0, 0x0000ff);
 
                         }
+                        Utils.drawCompoundString(Minecraft.getInstance().fontRenderer,
+                                event.getMatrixStack(), string.getString(),
+                                "\n", 0,0, 0x0000ff);
                     }
                 }
 

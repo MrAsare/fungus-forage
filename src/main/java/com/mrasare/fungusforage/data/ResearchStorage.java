@@ -1,8 +1,8 @@
 package com.mrasare.fungusforage.data;
 
+import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
-import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -35,9 +35,9 @@ public class ResearchStorage {
 
 
 
-                key.getPropertiesList().forEach(property -> {
-                    topicNBT.putInt(property.getName(),instance.getPropertyValue(key,property.getName()));
-                });
+//                Registration.SHROOM_LIST.get(key).forEach(property -> {
+//                    topicNBT.putInt(property.getName(),instance.getPropertyValue(key,property.getName()));
+//                });
 
                 nbt.put(key.getName(),topicNBT);
 
@@ -53,8 +53,7 @@ public class ResearchStorage {
             instance.getBoolList().keySet().forEach(key -> {
                 CompoundNBT topicNBT = list.getCompound(key.getName());
                 instance.setShroomState(key,(topicNBT.getBoolean("isDiscovered")));
-
-                key.getPropertiesList().forEach(property -> instance.setPropertyValue(key,property.getName(),topicNBT.getInt(property.getName())));
+//                Registration.SHROOM_LIST.get(key).forEach(property -> instance.setPropertyValue(key,property.getName(),topicNBT.getInt(property.getName())));
             });
         }
     }

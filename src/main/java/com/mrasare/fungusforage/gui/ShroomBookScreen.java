@@ -5,6 +5,7 @@ import com.mrasare.fungusforage.FungusForage;
 import com.mrasare.fungusforage.data.Research;
 import com.mrasare.fungusforage.data.ResearchStorage;
 import com.mrasare.fungusforage.setup.ClientSetup;
+import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;
@@ -88,10 +89,10 @@ public class ShroomBookScreen extends Screen {
 
             Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(research -> {
                 drawString(matrixStack,font, "§d§l§nBest Stats Discovered",100,40+ stringGap* (count.incrementAndGet()),0xffffff);
-                shroom.getPropertiesList().forEach(integerProperty -> {
-                    drawString(matrixStack,font, "§3"+StringUtils.capitalise(integerProperty.getName()) + " : " + "§a"+research.getPropertyValue(shroom,integerProperty.getName()),100,40+ stringGap* (count.incrementAndGet()),0xffffff);
-
-                });
+//                Registration.SHROOM_LIST.get(shroom).forEach(integerProperty -> {
+//                    drawString(matrixStack,font, "§3"+StringUtils.capitalise(integerProperty.getName()) + " : " + "§a"+research.getPropertyValue(shroom,integerProperty.getName()),100,40+ stringGap* (count.incrementAndGet()),0xffffff);
+//
+//                });
             });
 
 

@@ -34,10 +34,10 @@ public class ClientBoundPropertyMessage {
     public static void handle(ClientBoundPropertyMessage message, Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
 
-        context.enqueueWork(() -> {
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                    () -> () -> ClientOnlyResearch.updateClientPropertySingle(message.shroom,message.name,message.value));
-        });
+//        context.enqueueWork(() -> {
+//            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+//                    () -> () -> ClientOnlyResearch.updateClientPropertySingle(message.shroom,message.name,message.value));
+//        });
 
         context.setPacketHandled(true);
     }

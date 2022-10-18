@@ -3,8 +3,6 @@ package com.mrasare.fungusforage.gui;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mrasare.fungusforage.FungusForage;
 import com.mrasare.fungusforage.data.Research;
-import com.mrasare.fungusforage.gui.ShroomBookScreen;
-import com.mrasare.fungusforage.gui.ShroomButton;
 import com.mrasare.fungusforage.setup.ClientSetup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.Widget;

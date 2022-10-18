@@ -32,14 +32,14 @@ public class ServerBoundPropertyMessage {
     public static void handle(ServerBoundPropertyMessage message, Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
 
-        context.enqueueWork(()-> {
-                    context.getSender().getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->{
-                                iResearch.setPropertyValue(message.shroomName,message.name ,message.value);
-                                FungusForageNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(context::getSender), new ClientBoundPropertyMessage(message.shroomName, message.name,message.value));
-                            }
-                    );
-                }
-        );
+//        context.enqueueWork(()-> {
+//                    context.getSender().getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->{
+//                                iResearch.setPropertyValue(message.shroomName,message.name ,message.value);
+//                                FungusForageNetwork.CHANNEL.send(PacketDistributor.PLAYER.with(context::getSender), new ClientBoundPropertyMessage(message.shroomName, message.name,message.value));
+//                            }
+//                    );
+//                }
+//        );
 
         context.setPacketHandled(true);
     }

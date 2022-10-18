@@ -20,13 +20,13 @@ public class ClientOnlyResearch {
                 iResearch.setBoolList(map));
     }
 
-    public static void updateClientPropertySingle(Research.Shrooms shroom,String name, int newVal){
-        Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
-                iResearch.setPropertyValue(shroom,name,newVal));
-    }
-
-    public static void updateClientPropertyList(EnumMap<Research.Shrooms, HashMap<String,Integer>> map){
-        Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
-                iResearch.setPropertyList(map));
-    }
+//    public static void updateClientPropertySingle(Research.Shrooms shroom,String name, int newVal){
+//        Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
+//                iResearch.setPropertyValue(shroom,name,newVal));
+//    }
+//
+//    public static void updateClientPropertyList(EnumMap<Research.Shrooms, HashMap<String,Integer>> map){
+//        Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
+//                iResearch.setPropertyList(map));
+//    }
 }

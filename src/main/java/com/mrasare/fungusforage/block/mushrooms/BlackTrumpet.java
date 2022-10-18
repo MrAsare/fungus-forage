@@ -16,24 +16,15 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class BlackTrumpet extends AbstractShroom{
 
-    public static Research.Shrooms NAME = Research.Shrooms.BLACK_TRUMPET;
 
-    public BlackTrumpet() {
-        super(AbstractBlock.Properties.create(Material.PLANTS));
-        shroom = NAME;
-        AtomicReference<BlockState> stateAtomic = new AtomicReference<>(this.stateContainer.getBaseState().with(FACING,Direction.NORTH));
-        shroom.getPropertiesList().forEach(integerProperty -> {
-            stateAtomic.set(stateAtomic.get().with(integerProperty, Utils.getMaxValFromProperty(integerProperty) / 2));
-        });
-        EFFECT_MAP.put(NAME.getName(),effectsList);
-        this.setDefaultState(stateAtomic.get());
-    }
-
-    @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        shroom =NAME;
-        super.fillStateContainer(builder);
-        shroom.getPropertiesList().forEach(builder::add);
+    public BlackTrumpet(Research.Shrooms shroom) {
+        super(AbstractBlock.Properties.create(Material.PLANTS),shroom);
+//        AtomicReference<BlockState> stateAtomic = new AtomicReference<>(this.stateContainer.getBaseState().with(FACING,Direction.NORTH));
+//        mushroomProperties.forEach(integerProperty -> {
+//            stateAtomic.set(stateAtomic.get().with(integerProperty, Utils.getMaxValFromProperty(integerProperty) / 2));
+//        });
+        EFFECT_MAP.put(shroom.getName(),effectsList);
+//        this.setDefaultState(stateAtomic.get());
     }
 
     @Override

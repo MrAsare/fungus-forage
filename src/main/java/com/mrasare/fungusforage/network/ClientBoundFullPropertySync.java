@@ -1,6 +1,8 @@
 package com.mrasare.fungusforage.network;
 
 import com.mrasare.fungusforage.data.Research;
+import com.mrasare.fungusforage.data.ResearchStorage;
+import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
@@ -23,8 +25,9 @@ public class ClientBoundFullPropertySync {
     public static void encode(ClientBoundFullPropertySync message, PacketBuffer buffer){
         message.map.keySet().forEach(key-> {
             buffer.writeEnumValue(key);
-            key.getPropertiesList().forEach(integerProperty -> {
+            Registration.SHROOM_LIST.get(key).forEach(integerProperty -> {
                 buffer.writeString(integerProperty.getName());
+
                 buffer.writeInt(message.map.get(key).get(integerProperty.getName()));
             });
         });
@@ -34,10 +37,9 @@ public class ClientBoundFullPropertySync {
         EnumMap<Research.Shrooms,HashMap<String,Integer>> newMap = new EnumMap<>(Research.Shrooms.class);
         Arrays.stream(Research.Shrooms.values())
                 .forEach(shroomName-> {
-
                     newMap.put(buffer.readEnumValue(Research.Shrooms.class),new HashMap<>());
 
-                    shroomName.getPropertiesList().forEach(integerProperty -> {
+                    Registration.SHROOM_LIST.get(shroomName).forEach(integerProperty -> {
                         newMap.get(shroomName).put(buffer.readString(),buffer.readInt());
                     });
                 });
@@ -47,10 +49,10 @@ public class ClientBoundFullPropertySync {
     public static void handle(ClientBoundFullPropertySync message, Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
 
-        context.enqueueWork(() -> {
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                    () -> () -> ClientOnlyResearch.updateClientPropertyList(message.map));
-        });
+//        context.enqueueWork(() -> {
+//            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+//                    () -> () -> ClientOnlyResearch.updateClientPropertyList(message.map));
+//        });
 
         context.setPacketHandled(true);
     }
