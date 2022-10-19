@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.LazyOptional;
 
 public class ShroomButton extends Button {
 
-    private final Research.Shrooms shroom;
+    private final Research.Mushrooms shroom;
     private int uOffset =0;
     private final int SIZE;
     private final ResourceLocation textureLocation;
@@ -30,7 +30,7 @@ public class ShroomButton extends Button {
 
 
 
-    public ShroomButton(int x, int y,int size, IPressable pressedAction, Research.Shrooms shroom,ShroomSelect screen) {
+    public ShroomButton(int x, int y, int size, IPressable pressedAction, Research.Mushrooms shroom, ShroomSelect screen) {
         super(x, y, size, size, new StringTextComponent("soo"), pressedAction);
         this.SIZE = size;
         this.shroom = shroom;

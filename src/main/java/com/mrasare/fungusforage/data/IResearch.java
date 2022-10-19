@@ -2,14 +2,13 @@ package com.mrasare.fungusforage.data;
 
 
 import java.util.EnumMap;
-import java.util.HashMap;
 
 public interface IResearch{
 
-     void setShroomState(Research.Shrooms shroom,boolean bool);
-     Boolean isDiscovered(Research.Shrooms shroom);
-    EnumMap<Research.Shrooms, Boolean> getBoolList();
-    void setBoolList(EnumMap<Research.Shrooms,Boolean> list);
+     void setShroomState(Research.Mushrooms shroom, boolean bool);
+     Boolean isDiscovered(Research.Mushrooms shroom);
+    EnumMap<Research.Mushrooms, Boolean> getBoolList();
+    void setBoolList(EnumMap<Research.Mushrooms,Boolean> list);
     void copyBoolListFrom(IResearch research);
 //    void copyPropertiesListFrom(IResearch research);
 //    void setPropertyList(EnumMap<Research.Shrooms, HashMap<String,Integer>> map);

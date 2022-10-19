@@ -1,9 +1,8 @@
 package com.mrasare.fungusforage.item;
 
-import com.mrasare.fungusforage.block.mushrooms.AbstractShroom;
+import com.mrasare.fungusforage.block.mushroom.AbstractShroom;
 import com.mrasare.fungusforage.data.ResearchStorage;
 import com.mrasare.fungusforage.setup.ClientSetup;
-import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
@@ -32,7 +31,7 @@ public class MagnifyingGlass extends Item {
                 context.getPlayer().getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch -> {
 
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->{
-                        ClientSetup.updateBool(shroom.shroom,true);
+                        ClientSetup.updateBool(shroom.mushroom,true);
 
 //                        Registration.SHROOM_LIST.get(shroom).forEach(property-> {
 //                                    int oldval = iResearch.getPropertyList(shroom.shroom).get(property.getName());

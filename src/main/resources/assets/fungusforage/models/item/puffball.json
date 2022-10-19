@@ -1,3 +1,6 @@
 {
-  "parent" : "fungusforage:block/puffball"
+  "parent" : "item/generated",
+  "textures": {
+    "layer0": "fungusforage:item/puffball"
+  }
 }

@@ -12,8 +12,8 @@ import java.util.function.Supplier;
 
 public class ClientBoundFullSync {
 
-        public EnumMap<Research.Shrooms,Boolean> map;
-        public ClientBoundFullSync(EnumMap<Research.Shrooms,Boolean> map){
+        public EnumMap<Research.Mushrooms,Boolean> map;
+        public ClientBoundFullSync(EnumMap<Research.Mushrooms,Boolean> map){
             this.map = map;
         }
 
@@ -27,10 +27,10 @@ public class ClientBoundFullSync {
         }
 
         public static ClientBoundFullSync decode(PacketBuffer buffer){
-            EnumMap<Research.Shrooms,Boolean> newMap = new EnumMap<>(Research.Shrooms.class);
-            Arrays.stream(Research.Shrooms.values())
+            EnumMap<Research.Mushrooms,Boolean> newMap = new EnumMap<>(Research.Mushrooms.class);
+            Arrays.stream(Research.Mushrooms.values())
                     .forEach(shroomName-> {
-                        newMap.put(buffer.readEnumValue(Research.Shrooms.class),buffer.readBoolean());
+                        newMap.put(buffer.readEnumValue(Research.Mushrooms.class),buffer.readBoolean());
                     });
             return new ClientBoundFullSync(newMap);
         }

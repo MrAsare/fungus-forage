@@ -1,11 +1,5 @@
 package com.mrasare.fungusforage.data;
 
-import com.mrasare.fungusforage.block.mushrooms.AbstractShroom;
-import com.mrasare.fungusforage.setup.Registration;
-import net.minecraft.state.IntegerProperty;
-import net.minecraftforge.fml.RegistryObject;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -14,7 +8,7 @@ import java.util.HashMap;
 public class Research implements IResearch{
 
 
-    public enum Shrooms{
+    public enum Mushrooms {
 
         FLY_AGARIC("fly_agaric"),
         SHAGGY_INKCAP("shaggy_inkcap"),
@@ -24,7 +18,7 @@ public class Research implements IResearch{
 
         private final String name;
 
-        Shrooms(String name) {
+        Mushrooms(String name) {
             this.name = name;
         }
 
@@ -36,13 +30,13 @@ public class Research implements IResearch{
     }
 
 
-    public EnumMap<Shrooms,Boolean> mushroomMap = new EnumMap<>(Shrooms.class);
-    public EnumMap<Shrooms, HashMap<String,Integer>> propertyMap = new EnumMap<>(Shrooms.class);
+    public EnumMap<Mushrooms,Boolean> mushroomMap = new EnumMap<>(Mushrooms.class);
+    public EnumMap<Mushrooms, HashMap<String,Integer>> propertyMap = new EnumMap<>(Mushrooms.class);
 
 
 
     Research(){
-        Arrays.stream(Shrooms.values()).forEach(shrooms -> {
+        Arrays.stream(Mushrooms.values()).forEach(shrooms -> {
             mushroomMap.put(shrooms,false);
 //            propertyMap.put(shrooms,new HashMap<>());
 //            Registration.SHROOM_LIST.get(shrooms).forEach(integerProperty -> {
@@ -68,22 +62,22 @@ public class Research implements IResearch{
 //    }
 
     @Override
-    public void setShroomState(Shrooms shroom, boolean bool) {
+    public void setShroomState(Mushrooms shroom, boolean bool) {
         mushroomMap.put(shroom,bool);
     }
 
     @Override
-    public Boolean isDiscovered(Shrooms shroom) {
+    public Boolean isDiscovered(Mushrooms shroom) {
         return mushroomMap.getOrDefault(shroom,false);
     }
 
     @Override
-    public EnumMap<Shrooms, Boolean> getBoolList() {
+    public EnumMap<Mushrooms, Boolean> getBoolList() {
         return mushroomMap;
     }
 
     @Override
-    public void setBoolList(EnumMap<Shrooms, Boolean> list) {
+    public void setBoolList(EnumMap<Mushrooms, Boolean> list) {
         this.mushroomMap = list;
     }
 //
@@ -97,7 +91,7 @@ public class Research implements IResearch{
         this.mushroomMap = research.getBoolList();
     }
 
-    public EnumMap<Shrooms, HashMap<String, Integer>> getPropertiesMap() {
+    public EnumMap<Mushrooms, HashMap<String, Integer>> getPropertiesMap() {
         return propertyMap;
     }
 //

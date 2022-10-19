@@ -10,9 +10,9 @@ import java.util.function.Supplier;
 
 public class ServerBoundInputMessage {
 
-    private final Research.Shrooms shroomName;
+    private final Research.Mushrooms shroomName;
     private final boolean state;
-    public ServerBoundInputMessage(Research.Shrooms shroomName, boolean state){
+    public ServerBoundInputMessage(Research.Mushrooms shroomName, boolean state){
         this.shroomName = shroomName;
         this.state = state;
     }
@@ -23,7 +23,7 @@ public class ServerBoundInputMessage {
     }
 
     public static ServerBoundInputMessage decode(PacketBuffer buffer){
-        return new ServerBoundInputMessage(buffer.readEnumValue(Research.Shrooms.class),buffer.readBoolean());
+        return new ServerBoundInputMessage(buffer.readEnumValue(Research.Mushrooms.class),buffer.readBoolean());
     }
 
     public static void handle(ServerBoundInputMessage message, Supplier<NetworkEvent.Context> supplier){

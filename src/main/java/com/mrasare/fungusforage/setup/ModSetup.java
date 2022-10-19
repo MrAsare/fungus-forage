@@ -3,6 +3,7 @@ package com.mrasare.fungusforage.setup;
 import com.mrasare.fungusforage.FungusForage;
 import com.mrasare.fungusforage.data.ResearchStorage;
 import com.mrasare.fungusforage.network.FungusForageNetwork;
+import com.mrasare.fungusforage.setup.init.BlockInit;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +16,7 @@ public class ModSetup {
     public static final ItemGroup ITEM_GROUP = new ItemGroup("fungusForageTab") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Registration.FLY_AGARIC.get());
+            return new ItemStack(BlockInit.FLY_AGARIC.get());
         }
     };
 

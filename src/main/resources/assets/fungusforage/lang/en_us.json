@@ -6,6 +6,7 @@
 
 
 
+
   "block.fungusforage.fly_agaric" : "Amanita muscaria",
   "desc.fungusforage.fly_agaric":"§7§lRarity: §7Common|§7§lEdibility: §2POISONOUS!|§r§7§lLocations: §rPlains, Dark Forest, Birch|§r§7§lAppearance: §r Red Cap with white spots. Straight white stem. ",
 
@@ -16,6 +17,7 @@
   "block.fungusforage.puffball" : "Puffball",
 
   "block.fungusforage.black_trumpet" : "Black Trumpet",
+  "block.fungusforage.mushroom_dryer" : "Mushroom Dryer",
 
 
 

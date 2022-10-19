@@ -33,7 +33,7 @@ public class ShroomSelect extends ShroomBookScreen {
     protected void init() {
         super.init();
 
-        Arrays.stream(Research.Shrooms.values()).forEachOrdered(shroom ->
+        Arrays.stream(Research.Mushrooms.values()).forEachOrdered(shroom ->
         {
             addButton(new ShroomButton(100 + counter*(mushroomIconSize*2),75,mushroomIconSize, p_onPress_1_ -> {
                 ClientSetup.showBookScreen(shroom);

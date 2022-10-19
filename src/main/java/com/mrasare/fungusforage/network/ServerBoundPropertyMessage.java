@@ -1,19 +1,17 @@
 package com.mrasare.fungusforage.network;
 
 import com.mrasare.fungusforage.data.Research;
-import com.mrasare.fungusforage.data.ResearchStorage;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
-import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.function.Supplier;
 
 public class ServerBoundPropertyMessage {
 
-    private final Research.Shrooms shroomName;
+    private final Research.Mushrooms shroomName;
     private final String name;
     private final int value;
-    public ServerBoundPropertyMessage(Research.Shrooms shroomName,String name, int value){
+    public ServerBoundPropertyMessage(Research.Mushrooms shroomName, String name, int value){
         this.shroomName = shroomName;
         this.name = name;
         this.value = value;
@@ -26,7 +24,7 @@ public class ServerBoundPropertyMessage {
     }
 
     public static ServerBoundPropertyMessage decode(PacketBuffer buffer){
-        return new ServerBoundPropertyMessage(buffer.readEnumValue(Research.Shrooms.class),buffer.readString(),buffer.readInt());
+        return new ServerBoundPropertyMessage(buffer.readEnumValue(Research.Mushrooms.class),buffer.readString(),buffer.readInt());
     }
 
     public static void handle(ServerBoundPropertyMessage message, Supplier<NetworkEvent.Context> supplier){

@@ -1,16 +1,20 @@
 {
   "variants": {
     "facing=north": [
-      {"model" : "fungusforage:block/amethyst_deceiver"}
+      {"model" : "fungusforage:block/amethyst_deceiver1", "weight": 30},
+      {"model" : "fungusforage:block/amethyst_deceiver","weight": 30}
     ],
     "facing=east": [
-      { "model" : "fungusforage:block/amethyst_deceiver", "y": 90}
+      {"model" : "fungusforage:block/amethyst_deceiver1", "y": 90,"weight": 30},
+      { "model" : "fungusforage:block/amethyst_deceiver", "y": 90,"weight": 30}
     ],
     "facing=south": [
-      {"model" : "fungusforage:block/amethyst_deceiver", "y": 180}
+      {"model" : "fungusforage:block/amethyst_deceiver1","y": 180, "weight": 30},
+      {"model" : "fungusforage:block/amethyst_deceiver", "y": 180,"weight": 30}
     ],
     "facing=west": [
-      {"model" : "fungusforage:block/amethyst_deceiver", "y": 270}
+      {"model" : "fungusforage:block/amethyst_deceiver1", "y": 270,"weight": 30},
+      {"model" : "fungusforage:block/amethyst_deceiver", "y": 270,"weight": 30}
     ]
   }
 }

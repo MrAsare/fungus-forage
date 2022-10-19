@@ -1,9 +1,12 @@
 package com.mrasare.fungusforage.item;
 
 import com.google.common.collect.ImmutableSet;
-import com.mrasare.fungusforage.block.mushrooms.AbstractShroom;
+import com.mrasare.fungusforage.FungusForage;
+import com.mrasare.fungusforage.block.mushroom.AbstractShroom;
 import com.mrasare.fungusforage.setup.ModSetup;
-import com.mrasare.fungusforage.util.ModSoundEvents;
+import com.mrasare.fungusforage.setup.init.ItemInit;
+import com.mrasare.fungusforage.setup.init.SoundInit;
+import com.mrasare.fungusforage.util.MushroomEffect;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -21,7 +24,7 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-import static com.mrasare.fungusforage.setup.Registration.*;
+import static com.mrasare.fungusforage.setup.init.BlockInit.*;
 
 public class MushroomKnife extends ToolItem {
 
@@ -43,7 +46,7 @@ public class MushroomKnife extends ToolItem {
 
                 if (blockLookedAt instanceof AbstractShroom) {
 
-                    worldIn.playSound(null,new BlockPos(block.getHitVec()), ModSoundEvents.MUSHROOM_KNIFE_SLASH.get(), SoundCategory.BLOCKS,1f,1f);
+                    worldIn.playSound(null,new BlockPos(block.getHitVec()), SoundInit.MUSHROOM_KNIFE_SLASH.get(), SoundCategory.BLOCKS,1f,1f);
                     worldIn.setBlockState(new BlockPos(block.getHitVec()),Blocks.AIR.getDefaultState());
 
                     //Drop mushroom
@@ -51,11 +54,11 @@ public class MushroomKnife extends ToolItem {
 
 
 
-//                    //Drop mushroom samples
-//                    AbstractShroom shroom = (AbstractShroom)blockLookedAt;
-//                    ItemStack stack = new ItemStack(MUSHROOM_SAMPLE.get(),worldIn.rand.nextInt(3)+1);
-//                    stack.getOrCreateTag().put(FungusForage.MODID+".effects",MushroomEffect.writeToNBT(shroom.name));
-//                    worldIn.addEntity(new ItemEntity(worldIn,hitBlock.getX(),hitBlock.getY(),hitBlock.getZ(),stack));
+                    //Drop mushroom samples
+                    AbstractShroom shroom = (AbstractShroom)blockLookedAt;
+                    ItemStack stack = new ItemStack(ItemInit.MUSHROOM_SAMPLE.get(),worldIn.rand.nextInt(3)+1);
+                    stack.getOrCreateTag().put(FungusForage.MODID+".effects",shroom.getEffects());
+                    worldIn.addEntity(new ItemEntity(worldIn,hitBlock.getX(),hitBlock.getY(),hitBlock.getZ(),stack));
 
                     playerIn.getHeldItemMainhand().damageItem(1,playerIn,entity -> entity.sendBreakAnimation(entity.getActiveHand()));
                     return ActionResult.resultPass(playerIn.getHeldItem(handIn));

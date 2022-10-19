@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": [
+      {"model" : "fungusforage:block/mushroom_dryer"}
+    ],
+    "facing=east": [
+      { "model" : "fungusforage:block/mushroom_dryer", "y": 90}
+    ],
+    "facing=south": [
+      {"model" : "fungusforage:block/mushroom_dryer", "y": 180}
+    ],
+    "facing=west": [
+      {"model" : "fungusforage:block/mushroom_dryer", "y": 270}
+    ]
+  }
+}

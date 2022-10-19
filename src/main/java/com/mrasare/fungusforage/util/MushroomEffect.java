@@ -1,5 +1,7 @@
 package com.mrasare.fungusforage.util;
 
+import com.mrasare.fungusforage.data.Research;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.Effect;
 
 public class MushroomEffect  {
@@ -32,6 +34,7 @@ public class MushroomEffect  {
     public int getAmplifier() {
         return amplifier;
     }
+
 
 
 

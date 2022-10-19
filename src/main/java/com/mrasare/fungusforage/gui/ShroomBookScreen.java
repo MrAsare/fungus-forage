@@ -5,14 +5,12 @@ import com.mrasare.fungusforage.FungusForage;
 import com.mrasare.fungusforage.data.Research;
 import com.mrasare.fungusforage.data.ResearchStorage;
 import com.mrasare.fungusforage.setup.ClientSetup;
-import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import org.codehaus.plexus.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +24,7 @@ public class ShroomBookScreen extends Screen {
     private  int BGHeight;
     private final Minecraft instance;
     private  String displayString;
-    private Research.Shrooms shroom;
+    private Research.Mushrooms shroom;
     private int stringGap = 12;
 
     public ShroomBookScreen(ITextComponent component) {
@@ -110,7 +108,7 @@ public class ShroomBookScreen extends Screen {
     }
 
 
-    public Screen addDesc(Research.Shrooms shroom){
+    public Screen addDesc(Research.Mushrooms shroom){
         this.shroom = shroom;
         displayString = I18n.format("desc.fungusforage."+shroom.getName());
         return this;

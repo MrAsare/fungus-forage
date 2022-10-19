@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Utils {
-    private static ResourceLocation bg = new ResourceLocation(FungusForage.MODID,"textures/gui/bg.png");
+    private static final ResourceLocation bg = new ResourceLocation(FungusForage.MODID,"textures/gui/bg.png");
 
     public static void drawCompoundString(FontRenderer fontRenderer, MatrixStack matrixStack, String text, String separator, int xPos, int yPos, int color){
 

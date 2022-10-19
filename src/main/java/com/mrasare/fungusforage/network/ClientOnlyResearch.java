@@ -5,17 +5,16 @@ import com.mrasare.fungusforage.data.ResearchStorage;
 import net.minecraft.client.Minecraft;
 
 import java.util.EnumMap;
-import java.util.HashMap;
 
 public class ClientOnlyResearch {
 
 
-    public static void updateClientResearch(Research.Shrooms shroom, boolean state){
+    public static void updateClientResearch(Research.Mushrooms shroom, boolean state){
         Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
             iResearch.setShroomState(shroom,state));
     }
 
-    public static void updateClientResearch(EnumMap<Research.Shrooms,Boolean> map){
+    public static void updateClientResearch(EnumMap<Research.Mushrooms,Boolean> map){
         Minecraft.getInstance().player.getCapability(ResearchStorage.RESEARCH_CAPABILITY).ifPresent(iResearch ->
                 iResearch.setBoolList(map));
     }

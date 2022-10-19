@@ -1,6 +1,5 @@
 package com.mrasare.fungusforage.data;
 
-import com.mrasare.fungusforage.setup.Registration;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;

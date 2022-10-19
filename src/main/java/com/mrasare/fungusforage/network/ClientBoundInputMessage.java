@@ -10,10 +10,10 @@ import java.util.function.Supplier;
 
 public class ClientBoundInputMessage {
 
-    private Research.Shrooms shroom;
+    private Research.Mushrooms shroom;
     private boolean state = false;
 
-    public ClientBoundInputMessage(Research.Shrooms shroomName, boolean state){
+    public ClientBoundInputMessage(Research.Mushrooms shroomName, boolean state){
         this.shroom = shroomName;
         this.state = state;
     }
@@ -27,7 +27,7 @@ public class ClientBoundInputMessage {
     }
 
     public static ClientBoundInputMessage decode(PacketBuffer buffer){
-        return new ClientBoundInputMessage(buffer.readEnumValue(Research.Shrooms.class),buffer.readBoolean());
+        return new ClientBoundInputMessage(buffer.readEnumValue(Research.Mushrooms.class),buffer.readBoolean());
     }
 
     public static void handle(ClientBoundInputMessage message, Supplier<NetworkEvent.Context> supplier){

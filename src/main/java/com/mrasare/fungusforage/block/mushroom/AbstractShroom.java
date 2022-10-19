@@ -1,5 +1,6 @@
-package com.mrasare.fungusforage.block.mushrooms;
+package com.mrasare.fungusforage.block.mushroom;
 
+import com.mrasare.fungusforage.FungusForage;
 import com.mrasare.fungusforage.data.Research;
 import com.mrasare.fungusforage.setup.ClientSetup;
 import com.mrasare.fungusforage.util.MushroomEffect;
@@ -9,10 +10,12 @@ import net.minecraft.block.BushBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
+import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.Effect;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -27,28 +30,25 @@ import net.minecraftforge.fml.DistExecutor;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicReference;
 
 
 public abstract class AbstractShroom extends BushBlock {
 
-    public Research.Shrooms shroom;
+    public Research.Mushrooms mushroom;
 
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
 
     public static final HashMap<String, ArrayList<MushroomEffect>> EFFECT_MAP = new HashMap<>();
     protected final ArrayList<MushroomEffect> effectsList = new ArrayList<>();
-//    public  ArrayList<IntegerProperty> mushroomProperties = new ArrayList<>();
-    private final VoxelShape SHAPE = VoxelShapes.create(0.2,0,0.2,0.8,0.7,0.8);
+    //    public  ArrayList<IntegerProperty> mushroomProperties = new ArrayList<>();
+    private final VoxelShape SHAPE = VoxelShapes.create(0.2, 0, 0.2, 0.8, 0.7, 0.8);
 
-    public AbstractShroom(Properties properties, Research.Shrooms shroom) {
+    public AbstractShroom(Properties properties, Research.Mushrooms mushroom) {
         super(properties.hardnessAndResistance(10f).setRequiresTool().sound(SoundType.SLIME).doesNotBlockMovement());
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING,Direction.NORTH));
-        this.shroom = shroom;
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH));
+        this.mushroom = mushroom;
     }
 
 
@@ -64,13 +64,13 @@ public abstract class AbstractShroom extends BushBlock {
 //            return context2.get().with(FACING, context.getPlacementHorizontalFacing());
 
 //        }
-        return super.getStateForPlacement(context).with(FACING,context.getPlacementHorizontalFacing());
+        return super.getStateForPlacement(context).with(FACING, context.getPlacementHorizontalFacing());
     }
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if(!worldIn.isRemote){
-            DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()->ClientSetup.updateBool(shroom, !placer.isCrouching()));
+        if (!worldIn.isRemote) {
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientSetup.updateBool(mushroom, !placer.isCrouching()));
         }
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
     }
@@ -85,6 +85,28 @@ public abstract class AbstractShroom extends BushBlock {
         return SHAPE;
     }
 
-    public abstract Item.Properties getItemProperties();
+    public Food.Builder applyMushroomEffects(Research.Mushrooms shroom) {
+        Food.Builder builder = new Food.Builder();
+        builder.setAlwaysEdible();
+        EFFECT_MAP.get(shroom.getName()).forEach(mushroomEffect -> {
+            builder.effect(() -> new EffectInstance(mushroomEffect.getEffect(), mushroomEffect.getDuration(), mushroomEffect.getAmplifier()), 1f);
+        });
+        return builder;
+    }
 
+    public abstract Food.Builder getFoodValues(Food.Builder builder);
+
+    public CompoundNBT getEffects() {
+        CompoundNBT nbt = new CompoundNBT();
+
+        EFFECT_MAP.get(mushroom.getName()).forEach(mushroomEffect -> {
+            CompoundNBT stats = new CompoundNBT();
+            stats.putShort("duration", (short) mushroomEffect.getDuration());
+            stats.putShort("amplifier", (short) mushroomEffect.getAmplifier());
+            nbt.put(String.valueOf(Effect.getId(mushroomEffect.getEffect())),stats);
+
+        });
+
+        return nbt;
+    }
 }

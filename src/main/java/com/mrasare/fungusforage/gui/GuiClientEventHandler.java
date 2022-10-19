@@ -1,15 +1,15 @@
 package com.mrasare.fungusforage.gui;
 
 import com.mrasare.fungusforage.FungusForage;
-import com.mrasare.fungusforage.block.mushrooms.AbstractShroom;
+import com.mrasare.fungusforage.block.mushroom.AbstractShroom;
 import com.mrasare.fungusforage.data.ResearchStorage;
-import com.mrasare.fungusforage.setup.Registration;
+import com.mrasare.fungusforage.setup.init.BlockInit;
+import com.mrasare.fungusforage.setup.init.ItemInit;
 import com.mrasare.fungusforage.util.Utils;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.StringTextComponent;
@@ -40,16 +40,16 @@ public class GuiClientEventHandler {
 
                 RayTraceResult block = Minecraft.getInstance().player.pick(5.0D, 0.0F, false);
 
-                if (Minecraft.getInstance().player.getHeldItemMainhand().getItem() == Registration.MAGNIFYING_GLASS.get() &&
+                if (Minecraft.getInstance().player.getHeldItemMainhand().getItem() == ItemInit.MAGNIFYING_GLASS.get() &&
                         block.getType() == RayTraceResult.Type.BLOCK) {
 
                     BlockState blockStateLookedAt = Minecraft.getInstance().world.getBlockState(new BlockPos(block.getHitVec()));
 
                     if (blockStateLookedAt.getBlock() instanceof AbstractShroom) {
                         AbstractShroom shroom = (AbstractShroom) blockStateLookedAt.getBlock();
-                        StringTextComponent string = new StringTextComponent((iResearch.isDiscovered(shroom.shroom)? "§l§n" + I18n.format("block.fungusforage." + shroom.shroom.getName()):"§l§n???")+ "\n \n");
+                        StringTextComponent string = new StringTextComponent((iResearch.isDiscovered(shroom.mushroom)? "§l§n" + I18n.format("block.fungusforage." + shroom.mushroom.getName()):"§l§n???")+ "\n \n");
 
-                        if (Registration.SHROOM_LIST.get(shroom) != null) {
+//                        if (BlockInit.SHROOM_LIST.get(shroom) != null) {
 
 
 //                            Registration.SHROOM_LIST.get(shroom).forEach(tProperty -> {
@@ -58,7 +58,7 @@ public class GuiClientEventHandler {
 //                            });
 
 
-                        }
+//                        }
                         Utils.drawCompoundString(Minecraft.getInstance().fontRenderer,
                                 event.getMatrixStack(), string.getString(),
                                 "\n", 0,0, 0x0000ff);
@@ -80,7 +80,7 @@ public class GuiClientEventHandler {
 
                 RayTraceResult block = Minecraft.getInstance().player.pick(5.0D, 0.0F, false);
 
-                if (Minecraft.getInstance().player.getHeldItemMainhand().getItem() == Registration.MAGNIFYING_GLASS.get() &&
+                if (Minecraft.getInstance().player.getHeldItemMainhand().getItem() == ItemInit.MAGNIFYING_GLASS.get() &&
                         block.getType() == RayTraceResult.Type.BLOCK) {
 
                     BlockState blockStateLookedAt = Minecraft.getInstance().world.getBlockState(new BlockPos(block.getHitVec()));
