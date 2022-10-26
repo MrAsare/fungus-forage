@@ -3,6 +3,7 @@ package com.mrasare.fungusforage.item;
 import com.mrasare.fungusforage.block.mushroom.AbstractShroom;
 import com.mrasare.fungusforage.data.ResearchStorage;
 import com.mrasare.fungusforage.setup.ClientSetup;
+import com.mrasare.fungusforage.setup.ModSetup;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
@@ -15,7 +16,7 @@ public class MagnifyingGlass extends Item {
 
 
     public MagnifyingGlass(Properties properties) {
-        super(properties.maxStackSize(1));
+        super(properties.maxStackSize(1).group(ModSetup.ITEM_GROUP));
     }
 
 

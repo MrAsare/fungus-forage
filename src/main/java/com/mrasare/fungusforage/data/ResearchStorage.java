@@ -29,20 +29,12 @@ public class ResearchStorage {
 
             instance.getBoolList().keySet().forEach(key -> {
                 CompoundNBT topicNBT = new CompoundNBT();
-
                 topicNBT.putBoolean("isDiscovered",instance.isDiscovered(key));
-
-
-
 //                Registration.SHROOM_LIST.get(key).forEach(property -> {
 //                    topicNBT.putInt(property.getName(),instance.getPropertyValue(key,property.getName()));
 //                });
-
                 nbt.put(key.getName(),topicNBT);
-
-
             });
-
             return nbt;
         }
 

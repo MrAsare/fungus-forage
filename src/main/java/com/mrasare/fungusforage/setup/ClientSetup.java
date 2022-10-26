@@ -5,12 +5,14 @@ import com.mrasare.fungusforage.block.DryerBlockTileEntity;
 import com.mrasare.fungusforage.block.DryerBlockTileEntityRenderer;
 import com.mrasare.fungusforage.data.Research;
 import com.mrasare.fungusforage.data.ResearchStorage;
+import com.mrasare.fungusforage.entity.render.EntityMinishroomRenderer;
 import com.mrasare.fungusforage.gui.ShroomBookScreen;
 import com.mrasare.fungusforage.gui.ShroomSelect;
 import com.mrasare.fungusforage.network.FungusForageNetwork;
 import com.mrasare.fungusforage.network.ServerBoundInputMessage;
 import com.mrasare.fungusforage.network.ServerBoundPropertyMessage;
 import com.mrasare.fungusforage.setup.init.BlockInit;
+import com.mrasare.fungusforage.setup.init.EntityInit;
 import com.mrasare.fungusforage.setup.init.TileEntityInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
@@ -20,6 +22,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -31,8 +34,13 @@ public class ClientSetup {
 
     @SubscribeEvent
     public static void init(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(BlockInit.DRYER.get(), RenderType.getTranslucent());
-        ClientRegistry.bindTileEntityRenderer(TileEntityInit.DRYER_TILE_ENTITY.get(), DryerBlockTileEntityRenderer::new);
+        event.enqueueWork(()->{
+            RenderTypeLookup.setRenderLayer(BlockInit.DRYER.get(), RenderType.getTranslucent());
+            ClientRegistry.bindTileEntityRenderer(TileEntityInit.DRYER_TILE_ENTITY.get(), DryerBlockTileEntityRenderer::new);
+        });
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.MINISHROOM.get(), EntityMinishroomRenderer::new);
+
     }
 
 

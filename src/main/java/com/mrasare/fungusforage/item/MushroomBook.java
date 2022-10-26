@@ -1,8 +1,10 @@
 package com.mrasare.fungusforage.item;
 
 import com.mrasare.fungusforage.setup.ClientSetup;
+import com.mrasare.fungusforage.setup.ModSetup;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -12,7 +14,7 @@ import net.minecraftforge.fml.DistExecutor;
 
 public class MushroomBook extends Item {
     public MushroomBook(Properties properties) {
-        super(properties.maxStackSize(1));
+        super(properties.maxStackSize(1).group(ModSetup.ITEM_GROUP));
     }
 
 

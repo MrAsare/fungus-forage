@@ -45,7 +45,11 @@ public class ResearchHandler
                     }
             );
         }
+
+        System.out.println("join world");
     }
+
+
 
 
     @SubscribeEvent

@@ -1,11 +1,8 @@
 package com.mrasare.fungusforage;
 
-import com.mrasare.fungusforage.setup.init.BlockInit;
+import com.mrasare.fungusforage.setup.init.*;
 import com.mrasare.fungusforage.setup.ClientSetup;
 import com.mrasare.fungusforage.setup.ModSetup;
-import com.mrasare.fungusforage.setup.init.ItemInit;
-import com.mrasare.fungusforage.setup.init.TileEntityInit;
-import com.mrasare.fungusforage.setup.init.SoundInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -42,11 +39,11 @@ public class FungusForage
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
         BlockInit.init();
         ItemInit.init();
         TileEntityInit.init();
         SoundInit.init();
+        EntityInit.init();
 
         eventBus.addListener(ModSetup::init);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT,()->()-> {
